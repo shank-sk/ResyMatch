@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <!--Logo-->
+            <img src="/static/infinity-symbol-19499.png" alt="logo" width="60px" height="25px">
+            <a href="#" class="logo">ResyMatch</a>
+        </div>
+        <!--navbar-->
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#sec-2">Match</a>
+            <a href="{{url_for('about')}}">About Us</a>
+            <a href="{{url_for('contact')}}">Contact Us</a>
+        </nav>
+        <nav class="lo">
+            <img src="/static/User-Profile-PNG-High-Quality-Image.png" alt="user_logo" height="35px">
+            <a href="{{url_for('logout')}}" class="login">Logout</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-content">
+            <h2>Find Your Perfect Match:<br> <span class='hero-spl-text'>Ideal Candidates</span></h2>
+            <h3>Streamline your hiring process with our advanced job description and resume matching system. Discover the best-fit candidates faster and smarter."</h3>
+            <br>
+            <a href="#sec-2" class="btn">Learn How It Works</a>            
+        </div>
+        <div class="cont">
+            <img src="/static/ResyMatch.io-Resume-Scanner-Optimizer.png" class="flo" alt="hero" width="550px" height="420px">
+        </div>
+    </section>
+</section>
+<section id="sec-1">
+    <a href="#sec-2">
+        <div class="scroll-down"></div>
+    </a>
+</section>
+<div class="sec-2" id="sec-2">
+    
+    <form action="{{ url_for('matcher') }}" method="post" enctype="multipart/form-data">
+        <section class="textAndUploadStuff">
+            <div class="textBS">
+                <div class="innertextBS">
+                    <div class="step-title">3 Steps To Score</div>
+                </div>
+            </div>
+            <section class="big-upload-box">
+                <div class="container">
+                    <!-- Step 1 Card -->
+                    <div class="card">
+                        <h2>Step 1</h2>
+                        <p>Copy/paste or upload your resume here:</p>
+                        <div>
+                            <img width="200" class="up-img" height="200" src="static/uploadimg.png"
+                                alt="upload-to-cloud"><br><br>
+                            <label for="files" class="upload-btn">Upload Resume</label>
+                            <input id="files" type="file" name="resumes" multiple accept=".pdf, .docx, .txt"
+                                required style="visibility: hidden;">
+                        </div>
+                    </div>
+
+                    <!-- Step 2 Card -->
+                    <div class="card">
+                        <h2>Step 2</h2>
+                        <p>Paste the job post's details here:</p>
+                        <textarea class="JobDescDetails" name="job_description"
+                            placeholder="Enter job description here"></textarea>
+                    </div>
+
+                    <!-- Step 3 Card -->
+                    <!-- Step 3 Card -->
+                    <div class="card">
+                        <div class="card-content">
+                            {% if top_resumes or message %}
+                            <div class="results-container">
+                                {% if message %}
+                                <p class="status-message">{{ message }}</p>
+                                {% endif %}
+                                {% if top_resumes %}
+                                <ul class="ranking-list">
+                                    {% for resume, score in zip(top_resumes, similarity_scores) %}
+                                    <li class="ranking-item">
+                                        <span class="resume-name">{{ resume }}</span>
+                                        <span class="similarity-score">Score: {{ score }}%</span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <span><a href="{{url_for('dashboard')}}#sec-2" class="retry">Want to do it again</a></span>
+                            </div>
+                            {% else %}
+                            <h2>Step 3</h2>
+                            <p>Scan to compare and score your resume vs the job's description.</p>
+                            <div class="scan-arrow">⟶</div>
+                            <button type="submit" class="match-button">Match Resumes</button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+    </form>
+</div>
+
+<div class="faq-container">
+    <h1>Have Questions About Writing A Great Resume?</h1>
+    <p>Expert Answers to All Your Resume Inquiries.</p>
+    <h2>RESUME TEMPLATES FAQ</h2>
+    <div class="faq">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">
+                <p>How Does ResyMatch Help in Streamlining the Recruitment Process?</p>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer" id="answer1">
+                <p>ResyMatch automates the resume screening process by accurately matching resumes to job descriptions.
+                    This reduces the time HR professionals spend manually reviewing resumes, allowing them to focus on
+                    interviewing and hiring the best candidates. With ResyMatch, you can quickly identify the most
+                    suitable applicants based on their qualifications and experience.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">
+                <p>What Technology Does ResyMatch Use for Resume Matching?</p>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer" id="answer2">
+                <p>ResyMatch leverages advanced AI and machine learning algorithms to analyze resumes and match them
+                    against job descriptions. The system uses natural language processing (NLP) to understand the content
+                    of resumes and job postings, ensuring a high degree of accuracy in matching candidates to the roles
+                    they are best suited for.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">
+                <p>How Accurate is ResyMatch in Selecting the Right Candidates?</p>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer" id="answer3">
+                <p>ResyMatch is designed to achieve high accuracy in matching resumes to job descriptions by analyzing
+                    key factors such as skills, experience, and educational background. The system provides a match
+                    score that helps HR professionals quickly assess the suitability of candidates, ensuring that only
+                    the most qualified individuals are shortlisted for interviews.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">
+                <p>Can ResyMatch Handle Large Volumes of Resumes?</p>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer" id="answer4">
+                <p>Yes, ResyMatch is built to handle large volumes of resumes efficiently. The system is scalable and
+                    can process thousands of resumes in a short amount of time, making it ideal for large enterprises and
+                    recruitment firms that deal with high applicant volumes. This scalability ensures that no resume is
+                    overlooked and that every candidate is evaluated fairly.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">
+                <p>How Does ResyMatch Improve the Quality of Hires?</p>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer" id="answer5">
+                <p>By accurately matching resumes to job descriptions, ResyMatch helps HR professionals identify the
+                    most suitable candidates early in the recruitment process. This leads to better quality hires, as
+                    the system ensures that only those who meet the job requirements closely are considered for further
+                    evaluation. This reduces turnover rates and increases employee satisfaction.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="aoa" id="aoa">
+    <footer class="footer">
+      <div class="waves">
+          <div class="wave" id="wave1"></div>
+          <div class="wave" id="wave2"></div>
+          <div class="wave" id="wave3"></div>
+          <div class="wave" id="wave4"></div>
+      </div>
+      <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+      </a></li>
+  <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+      </a></li>
+  <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+      </a></li>
+  <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+      </a></li>
+      </ul>      <ul class="menu">
+          <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+      </ul>
+      <p>&copy;2024 ResyMatch | All Rights Reserved</p>
+  </footer>
+</div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="static/script.js"></script>
+
+    <!-- // If the 'scroll_to_sec2' flag is True, scroll to the section on page load -->
+    {% if scroll_to_sec2 %}
+    <script>
+        window.onload = function() {
+            document.getElementById('sec-2').scrollIntoView({ behavior: 'smooth' });
+        };
+    </script>
+    {% endif %}
+</body>
+
+</html>

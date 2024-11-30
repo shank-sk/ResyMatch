@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <!--Logo-->
+            <img src="/static/infinity-symbol-19499.png" alt="logo" width="60px" height="25px">
+            <a href="#" class="logo">ResyMatch</a>
+        </div>
+        <!--navbar-->
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">Match</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <nav class="lo">
+            <a href="{{ url_for('login') }}" class="login">Login</a><br>
+            <a href="{{ url_for('register') }}" class="register">Register</a><br>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-content">
+            <h2>Find Your Perfect Match:<br> <span class='hero-spl-text'>Ideal Candidates</span></h2>
+            <h3>Streamline your hiring process with our advanced job description and resume matching system. Discover
+                the best-fit candidates faster and smarter."</h3>
+            <br>
+            <a href="#how-it-works" class="btn">Learn How It Works</a>
+        </div>
+        <div class="cont">
+            <img src="/static/ResyMatch.io-Resume-Scanner-Optimizer.png" class="flo" alt="hero" width="550px" height="450px">
+        </div>
+</body>
+
+</html>
