@@ -64,38 +64,59 @@
    ``` bash
    http://127.0.0.1:5000
 
-📖 Usage
-Step 1: Register/Login
-Create an account or log in with existing credentials.
-Step 2: Upload Resumes and Provide Job Description
-Navigate to the Matcher page.
-Upload resumes in supported formats (PDF, DOCX, TXT).
-Input the job description.
-Click "Match Resumes" to process.
-Step 3: View Matching Results
-See the ranked list of the top matching resumes with similarity scores.
-View detailed results with visual charts.
-Download any resume directly from the results page.
-🔮 Future Enhancements
-Add support for real-time analytics and insights
-Integrate advanced NLP models for enhanced matching
-Expand file format support
-Provide recruiter and candidate dashboards with detailed reports
-Add email notifications for matching results
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+## 📖 Usage
 
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Step 1: Register/Login  
+🔐 Create an account or log in with existing credentials.
 
-👥 Team
-Shashank
-Akhil
-Onkar
-📞 Contact
-For questions or feedback, please reach out to us through GitHub Issues or contact the team members directly via LinkedIn links on the About page.
+### Step 2: Upload Resumes and Provide Job Description  
+📄 Navigate to the **Matcher** page.  
+📂 Upload resumes in supported formats (**PDF, DOCX, TXT**).  
+📝 Input the job description.  
+⚙️ Click **"Match Resumes"** to process.
+
+### Step 3: View Matching Results  
+📊 See the ranked list of the top matching resumes with **similarity scores**.  
+📈 View detailed results with **visual charts**.  
+⬇️ Download any resume directly from the results page.
+
+---
+
+## 🔮 Future Enhancements
+
+- 📡 Real-time analytics and insights  
+- 🤖 Advanced NLP models for enhanced matching  
+- 🗃️ Expanded file format support  
+- 📊 Recruiter & candidate dashboards with detailed reports  
+- 📬 Email notifications for matching results
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow the steps below to contribute:
+   ---bash
+      # 1. Fork the repository
+      # 2. Create your feature branch
+      git checkout -b feature/AmazingFeature
+      # 3. Commit your changes
+      git commit -m "Add some AmazingFeature"
+      # 4. Push to the branch
+      git push origin feature/AmazingFeature
+
+## 📄 License  
+This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
+
+---
+
+## 👥 Team  
+- **Shashank**  
+- **Akhil**  
+- **Onkar**
+
+---
+
+## 📞 Contact  
+For questions or feedback, please feel free to:   
+- 🔗 Contact team members directly through their **LinkedIn profiles** listed on the [About](./about) page.
+
