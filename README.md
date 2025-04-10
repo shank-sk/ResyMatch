@@ -94,18 +94,7 @@
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow the steps below to contribute:
-   ---bash
-      # 1. Fork the repository
-      # 2. Create your feature branch
-      git checkout -b feature/AmazingFeature
-      # 3. Commit your changes
-      git commit -m "Add some AmazingFeature"
-      # 4. Push to the branch
-      git push origin feature/AmazingFeature
-
-## 📄 License  
-This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
+Contributions are welcome!!
 
 ---
 
