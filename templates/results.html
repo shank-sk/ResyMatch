@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}ResyMatch - Results{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2><i class="fas fa-chart-line mr-2"></i>Match Results</h2>
+        <p class="mb-0">Job ID: {{ job_id }}</p>
+    </div>
+    <div class="card-body">
+        <div class="results-summary">
+            <h4>Summary</h4>
+            <p>Analyzed {{ resume_count }} resumes against the provided job description.</p>
+            <p>Top resume score: {{ top_score }}%</p>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="resultsChart"></canvas>
+        </div>
+        
+        <h4>Top Matches</h4>
+        <div class="resume-list">
+            {% for index in range(top_resumes|length) %}
+            <div class="resume-item">
+                <div>
+                    <i class="fas fa-file-alt mr-2"></i>
+                    <span>{{ top_resumes[index] }}</span>
+                </div>
+                <div>
+                    <span class="resume-score mr-2">Score: {{ similarity_scores[index] }}</span>
+                    <a href="{{ url_for('download_resume', filename=top_resumes[index]) }}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('matchresume') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Matcher
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('resultsChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ top_resumes|tojson }},
+            datasets: [{
+                label: 'Match Score (%)',
+                data: {{ similarity_scores|tojson }},
+                backgroundColor: '#4e73df',
+                borderColor: '#375ad3',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }]
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
