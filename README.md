@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![ResyMatch Logo](static/img/logo.png)
-
 **ResyMatch is a Flask-based web application designed to simplify the recruitment process by matching job descriptions with resumes. By leveraging Natural Language Processing (NLP) techniques such as TF-IDF vectorization and cosine similarity, ResyMatch helps recruiters identify the most relevant candidates quickly and effectively.**
 
 </div>
