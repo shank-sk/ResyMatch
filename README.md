@@ -59,7 +59,7 @@
    mkdir uploads
 6. **Run the application:**
    ``` bash
-   python main.py
+   python app.py
 7. **Access the application in your browser at:**
    ``` bash
    http://127.0.0.1:5000
